@@ -32,19 +32,32 @@ marker recovered) and the secure station scheme choice (`prudp:` vs
 `prudps:`). Needs a runtime online-menu DNS + traffic trace before the entry
 is finalized.
 
-## Outstanding keys (blockers)
+## Recovered keys (TODO-KEY closed 2026-10-27)
 
-- TODO-KEY: NEX key candidate `8f0c5daa` is UNPAIRED — present once in main
-  strings, no server-ID pair recovered (`pairs=[]`) [F nex_key]. Next: trace
-  the `8f0c5daa` load site in main.bin for the paired server ID
-  (movz/movk w2 construction near the NEX config call).
+- Game server ID `2A28FB00` (706199552), access key `8f0c5daa`.
+  Same GameMaker literal pool in the update main: key at file offset
+  `0x417ce95` between the NEX login format strings, ID double
+  `706199552.0` at `0x417cee8`; both literals occur exactly once.
+  Same-pool evidence; runtime/DNS confirmation still open (derived
+  SNI `g2a28fb00-lp1.s.n.srv.nintendo.net`).
 - Base-v0 NCA titlekey unknown: static analysis used the update (v655360)
   main; a base-vs-update NEX surface diff is still open.
 
-## Registry entry sketch (illustrative, not an edit)
+## Registry entry (landed in switch-nex)
 
 ```go
-{"rivals-of-aether", 23160, "<key once paired>", func(e *protocols.Env) {
-    // MatchmakeExtension + Referee + Ranking/Ranking2; secure scheme TBD.
+{"rivals-of-aether", 23160, "8f0c5daa", func(e *protocols.Env) {
+    e.StationScheme = "prudps"
+    e.Pia = protocols.LegacyPia()
+    e.Match = protocols.NewMatchmakingStore()
+    e.MatchmakeReferee = true
+    e.FinalizeCreateSession = true
+    e.JoinEchoSession = true
+    e.JoinRecapParticipate = true
 }}
 ```
+
+Secure scheme `prudps` follows the NEX 4.6.x peers (client knows both
+`prudp:/` and `prudps:`); Ranking/Ranking2 stay unregistered until the
+first boot's NotImplemented log. Provenance:
+`switch-nex/docs/rivals-of-aether.md`.
