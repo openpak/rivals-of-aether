@@ -32,7 +32,7 @@ marker recovered) and the secure station scheme choice (`prudp:` vs
 `prudps:`). Needs a runtime online-menu DNS + traffic trace before the entry
 is finalized.
 
-## Recovered keys (TODO-KEY closed 2026-10-27)
+## Recovered keys
 
 - Game server ID `2A28FB00` (706199552), access key `8f0c5daa`.
   Same GameMaker literal pool in the update main: key at file offset

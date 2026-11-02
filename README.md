@@ -13,7 +13,7 @@ OpenPak's Rivals of Aether Server.
 
 | Host | What | Served by |
 | --- | --- | --- |
-| `n.n.srv.nintendo.net`, `s.n.srv.nintendo.net` + secure PRUDP | NEX 4.6.4 auth, matchmaking, referee, ranking | [`switch-nex`](https://github.com/openpak/switch-nex) (registry entry pending, see [docs/nex.md](docs/nex.md)) |
+| `n.n.srv.nintendo.net`, `s.n.srv.nintendo.net` + secure PRUDP | NEX 4.6.4 auth, matchmaking, referee, ranking | [`switch-nex`](https://github.com/openpak/switch-nex) (see [docs/nex.md](docs/nex.md)) |
 | `stats.rivalsofaether.com` | match start/finish telemetry (plain HTTP) | this repo (`rivals-of-aetherd`) |
 | `www.rivalsofaether.com` | in-game news CDN | this repo (`rivals-of-aetherd`) |
 
