@@ -1,6 +1,6 @@
 # Changelog — rivals-of-aether
 
-## v0.1.0 — unreleased
+## v0.1.0 — 2026-11-04
 
 - `rivals-of-aetherd`: skeleton serving the first-party HTTP side. Match
   start/finish telemetry is accepted and not stored, the news CDN serves
